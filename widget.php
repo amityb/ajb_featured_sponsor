@@ -23,17 +23,17 @@ class AJB_Featured_Sponsor_Widget extends WP_Widget {
 	// The settings form for the widget
 	function form($instance) {
 		_log($instance);
-		$defaults = array( 'title' => 'Featured Sponsor', 'logo' => '123', 'url' => '123322', 'sponsor' => 'gaeefs');
+		$defaults = array( 'title' => 'Featured Sponsor', 'logo' => '123', 'website' => '123322', 'sponsor' => 'gaeefs');
 		$instance = wp_parse_args( (array) $instance, $defaults );
 		$title = $instance['title'];
 		$logo = $instance['logo'];
-		$url = $instance['url'];
+		$website = $instance['website'];
 		$sponsor = $instance['sponsor'];
 
 		?>
         <p>Title: <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
         <p>Sponsor: <input class="widefat" id="<?php echo $this->get_field_id( 'sponsor' ); ?>" name="<?php echo $this->get_field_name( 'sponsor' ); ?>" type="text" value="<?php echo esc_attr( $sponsor ); ?>" /></p>
-        <p>URL: <input class="widefat" id="<?php echo $this->get_field_id( 'url' ); ?>" name="<?php echo $this->get_field_name( 'url' ); ?>" type="text" value="<?php echo esc_attr( $url ); ?>" /></p>
+        <p>Website: <input class="widefat" id="<?php echo $this->get_field_id( 'website' ); ?>" name="<?php echo $this->get_field_name( 'website' ); ?>" type="text" value="<?php echo esc_attr( $website ); ?>" /></p>
         <p>Logo: <input class="widefat" id="<?php echo $this->get_field_id( 'logo' ); ?>" name="<?php echo $this->get_field_name( 'logo' ); ?>" type="text" value="<?php echo esc_attr( $logo ); ?>" /></p>
 
         <?php
@@ -45,7 +45,7 @@ class AJB_Featured_Sponsor_Widget extends WP_Widget {
 		_log($old_instance);
 		$instance = $old_instance;
 		$instance['title'] = wp_strip_all_tags( $new_instance['title'], false );
-		$instance['url'] = wp_strip_all_tags( $new_instance['url'], false );
+		$instance['website'] = wp_strip_all_tags( $new_instance['website'], false );
 		$instance['logo'] = wp_strip_all_tags( $new_instance['logo'], false );
 		$instance['sponsor'] = wp_strip_all_tags( $new_instance['sponsor'], false );		
 		return $instance;
@@ -59,11 +59,11 @@ class AJB_Featured_Sponsor_Widget extends WP_Widget {
 		echo $before_widget;
 		$title = apply_filters( 'widget_title', $instance['title'] );
 		$sponsor = empty( $instance['sponsor'] ) ? '&nbsp;' : $instance['sponsor'];
-		$url = empty( $instance['url'] ) ? '&nbsp;' : $instance['url'];
+		$website = empty( $instance['website'] ) ? '&nbsp;' : $instance['website'];
 		$logo = empty( $instance['logo'] ) ? '&nbsp;' : $instance['logo'];
 		
 		if (!empty($title) ) { echo $before_title . $title . $after_title; }
-		echo '<p><a href="' . $url . '"><img src="' . $logo . '" width="160px" /></a></p>';
+		echo '<p><a href="' . $website . '"><img src="' . $logo . '" width="160px" /></a></p>';
 		echo '<p>' . $sponsor . '</p>';
 		echo $after_widget;		
 	}

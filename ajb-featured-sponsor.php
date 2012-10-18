@@ -81,7 +81,7 @@ class AJB_Featured_Sponsor {
 	}
 
 	public static function deactivate() {
-		_log("AJB_Featured_Sponsor Deactivated");
+		_log("AJB_Featured_Sponsor Deactivated Now");
 	}
 	
 	public function create_menu() {
